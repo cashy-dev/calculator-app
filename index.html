@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Calculator</title>
+  <style>
+    body { font-family: Arial; max-width: 420px; margin: 40px auto; }
+    input, button { padding: 10px; margin: 6px 0; width: 100%; }
+    .row { display: flex; gap: 10px; }
+    .row input { width: 50%; }
+    #result { font-size: 20px; margin-top: 10px; }
+  </style>
+</head>
+<body>
+  <h1>Calculator</h1>
+
+  <div class="row">
+    <input id="a" type="number" placeholder="First number" />
+    <input id="b" type="number" placeholder="Second number" />
+  </div>
+
+  <button onclick="calc('+')">Add</button>
+  <button onclick="calc('-')">Subtract</button>
+  <button onclick="calc('*')">Multiply</button>
+  <button onclick="calc('/')">Divide</button>
+
+  <p id="result">Result: —</p>
+
+  <script>
+    function calc(op) {
+      const a = Number(document.getElementById("a").value);
+      const b = Number(document.getElementById("b").value);
+
+      if (op === '/' && b === 0) {
+        document.getElementById("result").innerText = "Result: Cannot divide by 0";
+        return;
+      }
+
+      let r;
+      if (op === '+') r = a + b;
+      if (op === '-') r = a - b;
+      if (op === '*') r = a * b;
+      if (op === '/') r = a / b;
+
+      document.getElementById("result").innerText = "Result: " + r;
+    }
+  </script>
+</body>
+</html>
